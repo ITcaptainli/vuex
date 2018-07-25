@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="activeDiv">
-      <div class="activeDivTitle">当前选择：<span>{{this.$store.state.homeList.name}}</span></div>
+      <div class="activeDivTitle">当前选择：<span>{{this.homeList.name}}</span></div>
       <div class="activeDivSel">
         请选择姓名
       </div>
       <ul>
-        <li v-for="item in homeList" :key="item.id" @click="activeClick({
+        <li v-for="item in homeListData" :key="item.id" @click="activeClick({
           'name': item.name,
           'imgSrc': item.imgSrc
         })">{{item.name}}</li>
@@ -16,11 +16,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'Active',
   data () {
     return {
-      homeList: [
+      homeListData: [
         {
           id: 1,
           name: 'Lee',
@@ -48,6 +49,9 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    ...mapState(['homeList'])
   },
   methods: {
     activeClick (data) {

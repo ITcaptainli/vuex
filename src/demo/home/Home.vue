@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="homeDiv">
-      <div class="homeName">{{this.$store.state.homeList.name}}</div>
+      <div class="homeName">{{this.homeList.name}}</div>
       <div class="homeImage">
-        <img :src="this.$store.state.homeList.imgSrc" />
+        <img :src="this.homeList.imgSrc" />
       </div>
       <router-link tag="div" to="/active" class="active">换人</router-link>
     </div>
@@ -11,8 +11,12 @@
 </template>
 
 <script scoped>
+import { mapState } from 'vuex'
 export default {
-  name: 'Home'
+  name: 'Home',
+  computed: {
+    ...mapState(['homeList'])
+  }
 }
 </script>
 
