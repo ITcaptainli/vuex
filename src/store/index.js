@@ -3,13 +3,11 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-let homeListNameStr = 'Lee'
-let homeListImgSrcStr = 'http://demo.zmblogs.com/vue/vuexDemo/images/lee.jpg'
+let homeListNameStr = ''
+let homeListImgSrcStr = ''
 try {
-  if (localStorage.homeListName) {
-    homeListNameStr = localStorage.homeListName
-    homeListImgSrcStr = localStorage.homeListImgSrc
-  }
+  homeListNameStr = localStorage.homeListName || 'Lee'
+  homeListImgSrcStr = localStorage.homeListImgSrc || 'http://demo.zmblogs.com/vue/vuexDemo/images/lee.jpg'
 } catch (e) {}
 
 export default new Vuex.Store({
